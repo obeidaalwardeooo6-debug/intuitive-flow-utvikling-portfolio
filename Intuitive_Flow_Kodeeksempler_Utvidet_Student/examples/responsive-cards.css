@@ -1,0 +1,40 @@
+/* Utdrag fra style.css i Intuitive Flow v4.2.0.
+   Kun regler for kortene på forsiden er tatt med her. */
+
+/* På større skjermer står tre kort ved siden av hverandre. */
+.home-service-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+/* Hvert kort har egen bakgrunn, kantlinje og avstand rundt innholdet. */
+.home-service-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 30px;
+}
+
+.home-service-card h3 {
+  font-size: 1.45rem;
+  line-height: 1.2;
+}
+
+/* På skjermer med bredde 970 px eller mindre vises ett kort per rad. */
+@media (max-width: 970px) {
+  .home-service-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* På smale mobilskjermer blir avstanden inni kortene litt mindre. */
+@media (max-width: 560px) {
+  .home-service-card {
+    padding: 23px;
+  }
+}
