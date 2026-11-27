@@ -2,15 +2,11 @@
 
 ## 8.1 Innledning
 
-Jeg har jobbet med nettsiden Intuitive Flow i omtrent seks måneder. Dette prosjektet har vært en viktig del av læringen min innen IT og webutvikling.
+Før jeg startet med Intuitive Flow, hadde jeg allerede jobbet med å lage en nettside som en skoleoppgave. Det var et prosjekt der jeg kunne øve meg på webutvikling og prøve ut forskjellige løsninger.
 
-Da jeg startet, hadde jeg mindre erfaring med hvordan man bygger opp en større nettside. Jeg hadde mye å lære om HTML, CSS, JavaScript og hvordan de forskjellige delene fungerer sammen.
+Intuitive Flow har vært en annen type erfaring for meg. Her har jeg jobbet med en ekte nettside over lengre tid, og nettsiden er nå publisert på internett.
 
-Gjennom prosjektet har jeg fått prøve meg på flere oppgaver. Jeg har jobbet med design, innhold, funksjoner, feilretting og forbedringer.
-
-Det som har vært spesielt lærerikt, er at nettsiden ikke bare er en skoleoppgave. Den er publisert på internett og skal fungere for mennesker som besøker den.
-
-Dette har gjort at jeg må tenke mer på kvalitet og brukervennlighet, og ikke bare på hvordan nettsiden ser ut.
+Jeg hadde derfor litt erfaring fra før, men dette prosjektet har gitt meg mulighet til å lære mer om hvordan man utvikler, tester og forbedrer en nettside som faktisk blir brukt.
 
 ## 8.2 Hva jeg har lært om programmering
 
@@ -144,21 +140,9 @@ Jeg ville i tillegg brukt mer tid på å forstå JavaScript før jeg arbeidet me
 
 ## 8.10 Min vurdering av egen kompetanse
 
-Når jeg sammenligner kunnskapen min i starten av prosjektet med det jeg kan nå, ser jeg at jeg har utviklet meg.
+Når jeg sammenligner den første nettsiden jeg laget som skoleoppgave med Intuitive Flow, ser jeg at jeg har utviklet meg. Skoleprosjektet ga meg grunnleggende erfaring, mens Intuitive Flow har lært meg mer om større prosjekter, flere språk, testing og vedlikehold.
 
-Jeg har fått bedre forståelse for hvordan en nettside er bygget opp, hvordan forskjellige filer henger sammen, og hvordan endringer kan påvirke resultatet.
-
-Jeg har også blitt mer oppmerksom på testing, tilgjengelighet og hvordan brukeren opplever nettsiden.
-
-Samtidig vil jeg ikke si at jeg behersker alle deler av webutvikling.
-
-Jeg føler meg tryggere på HTML og CSS, men JavaScript er fortsatt et område der jeg trenger mye trening.
-
-Jeg trenger også mer erfaring med selvstendig feilsøking og med å planlegge større programmeringsoppgaver.
-
-Jeg synes det er viktig å kunne vurdere min egen kompetanse på en realistisk måte.
-
-Det at jeg har fått en nettside publisert, betyr ikke at jeg er ferdig med å lære.
+Jeg har blitt tryggere på noen områder, men jeg har fortsatt mye å lære, spesielt innen JavaScript og selvstendig problemløsning.
 
 ## 8.11 Hva ønsker jeg å lære videre?
 
