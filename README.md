@@ -33,16 +33,14 @@ Nettsiden har blant annet:
 
 ## Dokumentasjon
 
-Jeg har dokumentert prosjektet i åtte deler:
-
-1. Prosjektbeskrivelse
-2. Kravspesifikasjon
-3. Systemarkitektur
-4. Utviklingsprosess
-5. Tekniske løsninger
-6. Testing og kvalitetssikring
-7. Sikkerhet og personvern
-8. Refleksjon
+1. [Prosjektbeskrivelse](docs/01-prosjektbeskrivelse.md)
+2. [Kravspesifikasjon](docs/02-kravspesifikasjon.md)
+3. [Systemarkitektur](docs/03-systemarkitektur.md)
+4. [Utviklingsprosess](docs/04-utviklingsprosess.md)
+5. [Tekniske løsninger](docs/05-tekniske-losninger.md)
+6. [Testing og QA](docs/06-testing-og-qa.md)
+7. [Sikkerhet og personvern](docs/07-sikkerhet-og-personvern.md)
+8. [Refleksjon](docs/08-refleksjon.md)
 
 ## Hva har jeg lært?
 
