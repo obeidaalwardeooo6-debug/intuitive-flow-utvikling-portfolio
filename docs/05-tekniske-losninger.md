@@ -2,179 +2,101 @@
 
 ## Innledning
 
-I dette prosjektet har jeg jobbet med HTML, CSS og JavaScript for å utvikle nettsiden Intuitive Flow.
+I Intuitive Flow har jeg brukt HTML, CSS og JavaScript. HTML bestemmer innholdet på sidene, CSS bestemmer hvordan det ser ut, og JavaScript gjør at brukeren kan gjøre mer enn bare å lese tekst.
 
-Jeg har lært at disse teknologiene har forskjellige oppgaver, men at de må fungere sammen.
+I denne delen viser jeg fem kodeeksempler fra versjon 4.2.0. Jeg har valgt dem fordi de viser forskjellige deler av programmeringen. Eksemplene har fått kommentarer og litt tydeligere formatering, men de er hentet fra prosjektet. Jeg forklarer hvordan de fungerer, hva jeg må være oppmerksom på, og hvordan jeg kan kontrollere resultatet.
 
-I denne delen viser jeg noen eksempler fra koden i prosjektet. Jeg forklarer hva koden gjør, og hvorfor den er brukt.
+## 5.1 Navigasjonsmeny med JavaScript
 
-Kodeeksemplene er korte utdrag fra prosjektversjon 4.2.0.
+**Kode:** [`examples/navigation.js`](../examples/navigation.js)
 
-## 5.1 HTML – Struktur og innhold
+På mobil har nettsiden en knapp som åpner og lukker menyen. Når siden er ferdig lastet, bruker JavaScript `querySelector` til å finne menyknappen (`.menu-toggle`) og menyområdet (`.header-right`).
 
-HTML brukes til å bygge opp nettsiden. Jeg har brukt HTML til overskrifter, tekst, knapper, navigasjon og forskjellige seksjoner.
+Når brukeren klikker, kjøres en `event listener`. Koden undersøker først om menyen allerede er åpen. Deretter legger den til eller fjerner CSS-klassen `active`. Koden oppdaterer også `aria-expanded` til `true` eller `false`, slik at menyens tilstand blir tydeligere for hjelpemidler.
 
-Et eksempel er språkvalget på nettsiden:
+Jeg har også sett hvordan menyen kan lukkes med Escape-tasten, med klikk utenfor og ved valg av en lenke. Når vinduet blir bredt, lukkes mobilmenyen automatisk.
 
-```html
-<a href="./index.html" lang="nb">NO</a>
-<a href="../EN/index.html" lang="en">EN</a>
-<a href="../NL/index.html" lang="nl">NL</a>
-```
+**Hvorfor denne løsningen?** På mindre skjermer er det ikke plass til alle lenkene. En menyknapp gjør det lettere å bruke nettstedet.
 
-**Forklaring:**
+**Slik kan jeg kontrollere:** Jeg åpner nettsiden i mobilvisning, trykker på knappen, lukker den med Escape og prøver å navigere videre.
 
-- `<a>` lager en lenke.
-- `href` bestemmer hvor lenken går.
-- `lang` forteller hvilket språk lenken bruker.
+**Dette vil jeg øve mer på:** Å forstå samspillet mellom HTML-elementer, CSS-klasser og hendelser i JavaScript.
 
-Nettsiden har tre språk: norsk, engelsk og nederlandsk. Jeg har lært at det er viktig å kontrollere lenkene mellom språkversjonene.
+## 5.2 Filtrering av innhold
 
-## 5.2 CSS – Design og responsivt oppsett
+**Kode:** [`examples/library-filter.js`](../examples/library-filter.js)
 
-CSS brukes til å bestemme hvordan nettsiden ser ut.
+I biblioteket kan brukeren velge hvilken type innhold som skal vises. JavaScript finner alle kortene og leser informasjonen som er lagret i HTML med `data-`-attributter.
 
-Jeg har jobbet med farger, tekststørrelser, avstander, knapper og oppsett.
+For hvert kort sammenligner en betingelse (`if`-lignende uttrykk) valgt type og tema med kortets verdier. Hvis et kort ikke passer, får det egenskapen `hidden = true`. En løkke (`for ... of`) undersøker alle kortene. Deretter oppdateres antallet synlige kort på siden.
 
-Et eksempel fra prosjektet er hvordan kortene på nettsiden tilpasses mindre skjermer:
+Når brukeren trykker på en filterknapp eller endrer tema, kjøres funksjonen `render()` på nytt. Innholdet oppdateres uten at nettleseren må laste inn hele siden på nytt.
 
-```css
-.home-service-cards {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-}
+**Hvorfor denne løsningen?** Det blir enklere å finne riktig innhold når det finnes mange kort på samme side.
 
-@media (max-width: 970px) {
-  .home-service-cards {
-    grid-template-columns: 1fr;
-  }
-}
-```
+**Slik kan jeg kontrollere:** Jeg velger ulike filtre og ser om de riktige kortene og antallet resultater vises. Jeg kontrollerer også hva som skjer hvis det ikke finnes treff.
 
-**Forklaring:**
+**Dette vil jeg øve mer på:** `dataset`, løkker, betingelser og hvordan funksjoner kan brukes flere ganger.
 
-- `display: grid` brukes til å organisere elementer.
-- `grid-template-columns` bestemmer antall kolonner.
-- `gap` lager mellomrom.
-- `@media` gjør det mulig å endre designet etter skjermstørrelsen.
+## 5.3 Tilgjengelighet og redusert bevegelse
 
-På større skjermer kan kortene vises i tre kolonner. På mindre skjermer blir de vist i én kolonne.
+**Kode:** [`examples/reduced-motion.js`](../examples/reduced-motion.js)
 
-Dette har hjulpet meg med å forstå hvordan responsivt design fungerer.
+På forsiden finnes en dekorativ video. Noen brukere ønsker mindre bevegelse på skjermen. JavaScript bruker `matchMedia('(prefers-reduced-motion: reduce)')` for å lese denne innstillingen.
 
-## 5.3 JavaScript – Navigasjonsmeny
+Hvis brukeren ønsker mindre bevegelse, stoppes videoen med `pause()`. Hvis det er tillatt, kan koden prøve å spille videoen av igjen. Den følger også med på om innstillingen endres.
 
-JavaScript brukes for å gjøre nettsiden interaktiv.
+**Hvorfor denne løsningen?** En nettside bør ta hensyn til forskjellige brukere, ikke bare hvordan designet ser ut.
 
-Et eksempel er menyen på mobil. Den skal kunne åpnes og lukkes når brukeren trykker på menyknappen.
+**Slik kan jeg kontrollere:** Jeg slår på redusert bevegelse i systemet eller i utviklerverktøyet og undersøker om videoen stopper.
 
-```javascript
-const toggle = document.querySelector('.menu-toggle');
-const right = document.querySelector('.header-right');
+**Dette vil jeg øve mer på:** Tilgjengelighet, systeminnstillinger og hva som skjer når nettleseren ikke tillater automatisk videoavspilling.
 
-toggle.addEventListener('click', () => {
-  const isOpening = !right.classList.contains('active');
-  right.classList.toggle('active', isOpening);
-  toggle.setAttribute('aria-expanded', String(isOpening));
-});
-```
+## 5.4 Responsivt design med CSS
 
-**Forklaring:**
+**Kode:** [`examples/responsive-cards.css`](../examples/responsive-cards.css)
 
-- `querySelector` finner et HTML-element.
-- `addEventListener` reagerer når brukeren klikker.
-- `classList.toggle` legger til eller fjerner en CSS-klasse.
-- `aria-expanded` viser om menyen er åpen eller lukket.
+Tjenestekortene bruker CSS Grid. `grid-template-columns: repeat(3, minmax(0, 1fr))` lager tre kolonner på større skjermer. `gap: 22px` bestemmer mellomrommet mellom kortene.
 
-Dette er en del av den opprinnelige menykoden. Den komplette løsningen kontrollerer også blant annet Escape-tasten og klikk utenfor menyen.
+Med `@media (max-width: 970px)` endres oppsettet til én kolonne når skjermen blir mindre. På ekstra smale skjermer blir også avstanden inni kortene redusert.
 
-Jeg har lært mer om hvordan JavaScript kan endre HTML-elementer. Samtidig trenger jeg mer øvelse for å forstå og skrive slike funksjoner helt selvstendig.
+**Hvorfor denne løsningen?** Et oppsett med tre kolonner kan bli for trangt på mobil. Én kolonne gir bedre plass til tekst og knapper.
 
-## 5.4 JavaScript – Filtrering av innhold
+**Slik kan jeg kontrollere:** Jeg bruker mobilvisning i nettleserens utviklerverktøy og endrer skjermbredden.
 
-På nettsiden finnes det en funksjon som filtrerer innhold i biblioteket.
+**Dette vil jeg øve mer på:** CSS Grid, media queries og hvordan ulike skjermstørrelser påvirker layout.
 
-JavaScript kontrollerer hva brukeren har valgt, og viser bare kortene som passer til valget.
+## 5.5 Språkvalg i HTML
 
-Et utdrag fra koden:
+**Kode:** [`examples/language-switcher.html`](../examples/language-switcher.html)
 
-```javascript
-const matches = (kind === 'all' || card.dataset.kind === kind) &&
-  (!topic || topic.value === 'all' || card.dataset.topic === topic.value);
+Intuitive Flow finnes på norsk, engelsk og nederlandsk. I eksempelet bruker jeg `<a>` for å lage lenker mellom språkversjonene. `href` bestemmer hvilken fil lenken peker til, og `lang` angir språket. På den norske siden er norsk markert som aktivt med `aria-current="page"`.
 
-card.hidden = !matches;
-```
+**Hvorfor denne løsningen?** Besøkende skal enkelt kunne finne en språkversjon de forstår. Egne mapper gjør det også mulig å organisere innholdet etter språk.
 
-**Forklaring:**
+**Slik kan jeg kontrollere:** Jeg åpner den norske forsiden og trykker på NO, EN og NL for å se om de riktige sidene åpnes.
 
-- `dataset` leser informasjon fra HTML-elementer.
-- `matches` kontrollerer om innholdet passer med filtreringen.
-- `hidden` brukes til å skjule kort som ikke passer.
+**Dette vil jeg øve mer på:** Å holde lenker og navigasjon oppdatert når samme nettsted finnes på flere språk.
 
-Dette gjør at innholdet kan filtreres uten at hele siden må lastes inn på nytt.
+## 5.6 Viktige begreper
 
-Denne delen av JavaScript er mer avansert for meg. Jeg ønsker å lære mer om betingelser, variabler og hvordan funksjoner arbeider med flere elementer.
+| Begrep | Hva betyr det? | Eksempel i prosjektet |
+|---|---|---|
+| DOM | Nettleserens struktur av HTML-elementer. | JavaScript finner menyknappen med `querySelector`. |
+| Event listener | Kode som reagerer når noe skjer. | Menyen reagerer på et klikk. |
+| `dataset` | Gir tilgang til HTML-verdier fra `data-`-attributter. | Biblioteket leser type og tema fra kortene. |
+| CSS Grid | Måte å plassere elementer i rader og kolonner. | Tjenestekort på forsiden. |
+| Media query | CSS-regel som gjelder ved bestemte forhold. | Kortene vises i én kolonne på mobil. |
+| ARIA | Informasjon som hjelper hjelpemidler å forstå elementer. | `aria-expanded` viser om menyen er åpen. |
 
-## 5.5 HTML og Netlify Forms – Kontaktskjema
+## 5.7 Hva jeg har lært
 
-Jeg har også jobbet med kontaktskjemaer.
+Gjennom prosjektet har jeg blitt tryggere på HTML og CSS. Jeg forstår bedre hvordan jeg kan bygge en side, bruke klasser og tilpasse designet til ulike skjermstørrelser.
 
-Et eksempel fra den norske kontaktsiden:
+JavaScript har vært mer utfordrende. Jeg kan følge koden og forstå mer når jeg får forklart hva en funksjon gjør, men jeg trenger fortsatt øvelse for å skrive slike funksjoner helt selvstendig. Jeg vil spesielt lære mer om variabler, hendelser, løkker og feilsøking.
 
-```html
-<form
-  action="/NO/takk"
-  class="contact-form"
-  data-netlify="true"
-  method="POST"
-  name="kontakt"
-  netlify-honeypot="bot-field">
-```
-
-**Forklaring:**
-
-- `<form>` brukes til å lage et skjema.
-- `method="POST"` brukes når skjemaet sender informasjon.
-- `data-netlify="true"` brukes av Netlify til skjemahåndtering.
-- `action` angir hvor brukeren sendes etter innsending.
-
-Jeg har lært hvordan HTML-skjemaer kan brukes sammen med en tjeneste som Netlify.
-
-Dette gjør at jeg ikke trenger å programmere en egen server for å motta skjemaene.
-
-## 5.6 Tilgjengelighet – Mindre animasjon
-
-Nettsiden har også støtte for brukere som ønsker mindre bevegelse på skjermen.
-
-I JavaScript brukes:
-
-```javascript
-const motion = window.matchMedia(
-  '(prefers-reduced-motion: reduce)'
-);
-```
-
-Koden brukes til å undersøke brukerens innstillinger for animasjon. I prosjektet kan en dekorativ video stoppes når brukeren foretrekker mindre bevegelse.
-
-Jeg har lært at tilgjengelighet er viktig når man lager nettsider. En nettside bør ikke bare se bra ut, men også være behagelig og enkel å bruke.
-
-## 5.7 Hva har jeg lært av programmeringen?
-
-Gjennom prosjektet har jeg fått mer praktisk erfaring med HTML, CSS og JavaScript.
-
-Jeg føler meg tryggere på HTML og CSS enn på JavaScript.
-
-JavaScript har vært mer utfordrende fordi jeg må forstå variabler, funksjoner, betingelser og hvordan forskjellige deler av koden fungerer sammen.
-
-Når jeg møter kode jeg ikke forstår, trenger jeg ofte å lese forklaringer og prøve meg fram.
-
-Jeg har lært at programmering krever tålmodighet, testing og mye øvelse.
+Jeg har også lært at små kodeendringer bør kontrolleres i nettleseren. Det er viktig å vite **hva** koden gjør, men også **hvorfor** den er brukt, og hvordan jeg kan finne ut om den fungerer riktig.
 
 ## Oppsummering
 
-Jeg har brukt flere tekniske løsninger for å bygge nettsiden Intuitive Flow.
-
-HTML brukes til strukturen, CSS til designet og JavaScript til interaktive funksjoner.
-
-Prosjektet har gitt meg bedre forståelse for webutvikling. Samtidig vet jeg at jeg fortsatt har mye å lære, spesielt innen JavaScript og problemløsning.
+Disse eksemplene viser hvordan HTML, CSS og JavaScript samarbeider i Intuitive Flow. De viser ikke hele nettstedet, men utvalgte funksjoner som jeg kan åpne, lese og forklare i forbindelse med vurderingen i utvikling.
